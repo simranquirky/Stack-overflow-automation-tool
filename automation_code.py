@@ -3,15 +3,21 @@ from subprocess import Popen, PIPE
 import requests
 import webbrowser
 
+
+#getting the data
 def getData(cmd):
 	args = shlex.split(cmd)
 	process = Popen(args, stdout = PIPE, stderr = PIPE)
 	output, error = process.communicate()
 	return output, error
+
+#checking for the errors, one encountering the error make a request
 def make_request(error):
 	print("Searching for " + error)
 	response = requests.get("https://api.stackexchange.com/"+"/2.2/search?order=desc&sort=activity&tagged=python&intitle={}&site=stackoverflow".format(error))
 	return response.json()
+
+#get the specified url for the error in the code
 def get_urls(json_dict):
 	url_list = []
 	count = 0
@@ -23,8 +29,12 @@ def get_urls(json_dict):
 			break
 	for i in url_list:
 		webbrowser.open(i)
-
+		
+#give the path for input file
 filePath=input("Enter the python file name you want to check:")
+
+
+#running the main function calling all other functions
 
 if __name__ == "__main__":
 	output, error = getData("python {}".format(filePath))
