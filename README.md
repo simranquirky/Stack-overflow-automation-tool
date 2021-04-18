@@ -14,3 +14,23 @@ the video file attcahed shows the successful execution of the code.
 
 # Prerequisites for running the code:
 have a python IDE preferably Anaconda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(I made this project to submit for CRIO.DO project edition)
